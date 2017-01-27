@@ -40,7 +40,7 @@ class Series extends Component{
             return 0;});
         return alphaOrder.map((serie) => {
             return(
-                <li key={serie.id} onClick={() => this.props.Mov_Select(serie)}>
+                <li key={serie.id} onClick={() => this.props.Cat_Ser_Select(serie)}>
                     <Link to="/serie">{serie.title}</Link>
                 </li>
             );
@@ -79,13 +79,13 @@ class Series extends Component{
 
 function mapStateToProps(state) {
     return {
-        categories: state.categories,
+        categories_serie: state.categories_serie,
         series: state.series
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({Cat_Select: Cat_Select, Mov_Select: Mov_Select}, dispatch)
+    return bindActionCreators({Cat_Ser_Select: Cat_Ser_Select, Ser_Select: Ser_Select}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Series);

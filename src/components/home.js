@@ -5,6 +5,7 @@ import {Link} from 'react-router';
 import Header from './header';
 import {Cat_Select} from '../action/cat_select';
 import {Mov_Select} from '../action/mov_select';
+import {Ser_Select} from '../action/ser_select';
 
 class Home extends Component{
 
@@ -33,6 +34,21 @@ class Home extends Component{
             );
         });
     }
+    last_series(){
+        var ordered = [];
+        for (var i=0;  i < this.props.series.length;i++) {
+            ordered.push(this.props.series[i]);
+        }
+        ordered.sort(function(mov1, mov2) {return mov1.upload_date - mov2.upload_date});
+        var last_series = ordered.slice(0,10);
+        return last_series.map((serie) => {
+            return(
+                <li key={serie.id} onClick={() => this.props.Ser_Select(serie)}>
+                    <Link to="/serie">{serie.title}</Link>
+                </li>
+            );
+        });
+    }
 
     render() {
         return(
@@ -42,6 +58,8 @@ class Home extends Component{
                 <div>{this.categories()}</div>
                 <h2>Last Release</h2>
                 <div>{this.last_release()}</div>
+                <h2>Last Series</h2>
+                <div>{this.last_series()}</div>
             </div>
         );
     }
@@ -50,12 +68,14 @@ class Home extends Component{
 function mapStateToProps(state) {
     return {
         categories: state.categories,
-        movies: state.movies
+        categories_serie: state.categories_serie,
+        movies: state.movies,
+        series:state.series
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({Cat_Select: Cat_Select, Mov_Select: Mov_Select}, dispatch)
+    return bindActionCreators({Cat_Select: Cat_Select, Mov_Select: Mov_Select,Ser_Select: Ser_Select}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Link} from 'react-router';
 import Header from './header';
-import {Ser_Select} from '../action/ser_select_select.js';
+import {Ser_Select} from '../action/ser_select.js';
 class Category_Serie extends Component {
 
     getCatSeries(){
