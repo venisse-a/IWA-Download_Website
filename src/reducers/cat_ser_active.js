@@ -1,6 +1,6 @@
 export default function(state=null, action){
     switch(action.type) {
-        case "CATEGORY_MOVIE_CLICKED":
+        case "CATEGORY_SERIE_CLICKED":
             return action.payload;
             break;
     }

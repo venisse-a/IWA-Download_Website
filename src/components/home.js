@@ -12,7 +12,7 @@ class Home extends Component{
         return this.props.categories.map((category) => {
             return(
                 <li key={category.name} onClick={() => this.props.Cat_Select(category)}>
-                    <Link to="/category">{category.name}</Link>
+                    <Link to="/category_mov">{category.name}</Link>
                 </li>
             );
         });

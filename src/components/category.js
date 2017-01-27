@@ -5,12 +5,12 @@ import {Link} from 'react-router';
 import Header from './header';
 import {Mov_Select} from '../action/mov_select.js';
 
-class Category extends Component {
+class Category_Movie extends Component {
 
     getCatMovies(){
         var catMovies = [];
         for (var i=0;  i < this.props.movies.length;i++) {
-            if (this.props.movies[i].genre.indexOf(this.props.activeCategory.name) > -1) {
+            if (this.props.movies[i].genre.indexOf(this.props.active_movie_category.name) > -1) {
                 catMovies.push(this.props.movies[i]);
             }
         }
@@ -31,7 +31,7 @@ class Category extends Component {
         return (
             <div>
                 <Header />
-                <h2>Category : {this.props.activeCategory.name}</h2>
+                <h2>Category : {this.props.active_movie_category.name}</h2>
                 <div>{this.getCatMovies()}</div>
             </div>
         );
@@ -40,7 +40,7 @@ class Category extends Component {
 
 function mapStateToProps(state) {
     return {
-        activeCategory: state.activeCategory,
+        active_movie_category: state.active_movie_category,
         movies: state.movies
     }
 }
@@ -49,4 +49,4 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({Mov_Select: Mov_Select}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Category);
+export default connect(mapStateToProps, mapDispatchToProps)(Category_Movie);
