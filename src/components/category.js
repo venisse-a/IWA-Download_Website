@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Link} from 'react-router';
+import {Card,Image} from 'semantic-ui-react';
 import Header from './header';
 import {Mov_Select} from '../action/mov_select.js';
 
@@ -20,9 +21,13 @@ class Category_Movie extends Component {
             return 0;});
         return catMovies.map((movie) => {
             return(
-                <li key={movie.id} onClick={() => this.props.Mov_Select(movie)}>
-                    <Link to="/movie">{movie.title}</Link>
-                </li>
+            <Card key={movie.id} onClick={() => this.props.Mov_Select(movie)}>
+                <Image src={movie.cover} size="small"/>
+                <Card.Content>
+                    <Card.Header>{<Link to="/movie">{movie.title}</Link>}</Card.Header>
+                    <Card.Meta>{movie.release_date}</Card.Meta>
+                </Card.Content>
+            </Card>
             );
         });
     }
@@ -32,7 +37,7 @@ class Category_Movie extends Component {
             <div>
                 <Header />
                 <h2>Category : {this.props.active_movie_category.name}</h2>
-                <div>{this.getCatMovies()}</div>
+                <Card.Group itemsPerRow={8}>{this.getCatMovies()}</Card.Group>
             </div>
         );
     }
