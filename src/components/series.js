@@ -8,8 +8,6 @@ import {Ser_Select} from '../action/ser_select';
 
 class Series extends Component{
 
-
-
     render() {
         return(
             <div>

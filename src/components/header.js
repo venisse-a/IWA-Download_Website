@@ -21,9 +21,6 @@ class Header extends Component{
                 <Link to="/login">
                     <Button color='green' className="button">Sign In</Button>
                 </Link>
-                <Link to="/register">
-                    <Button color='grey' className="button">Register</Button>
-                </Link>
             </Segment>
         );
     }

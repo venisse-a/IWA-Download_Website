@@ -4,11 +4,13 @@ import Active_Movie_Category from './cat_active';
 import Movies from './movies';
 import Active_Movie from './mov_active';
 import Series_Categories from './categories_series';
+import Users from './user';
 import Active_Serie from './ser_active'
 import Series from './series'
 
 
 const allReducers = combineReducers({
+    users : Users,
     categories : Categories,
     categories_series : Series_Categories,
     movies : Movies,

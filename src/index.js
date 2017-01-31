@@ -11,9 +11,10 @@ import Movie from './components/movie';
 import Login from './components/login';
 import Series from './components/series';
 import Serie from './components/serie';
-import Category_Serie from './components/category'
-import Home_Movies from './components/home_movies'
-import Home_Series from './components/home_series'
+import User from './components/user';
+import Category_Serie from './components/category';
+import Home_Movies from './components/home_movies';
+import Home_Series from './components/home_series';
 
 
 const store = createStore(allReducers);
@@ -30,6 +31,7 @@ ReactDOM.render(
             <Route path="/category_ser" component={Category_Serie}/>
             <route path="/homemovies" component={Home_Movies}/>
             <route path="/homeseries" component={Home_Series}/>
+            <route path="/user" component={User}/>
         </Router>
     </Provider>
     , document.getElementById('root'));
