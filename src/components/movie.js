@@ -25,7 +25,7 @@ class Movie extends Component {
                             <div>{this.props.activeMovie.synopsis}</div>
                         </Segment>
                         <div></div>
-                        <Button content='Download' icon='download icon' color='green' labelPosition='left' />
+                        <Button content='Download' icon='download' color='green' labelPosition='left' />
                     </Grid.Column>
                 </Grid>
             </div>
