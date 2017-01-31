@@ -10,9 +10,9 @@ Run the project:
 
 Issues and Improvement:
 
-Login system doesn't work.
-No possibility to add a movie or a tv show
-Possibility to add categories for series as it works with movies.
+- Login system doesn't work.
+- No possibility to add a movie or a tv show
+- Possibility to add categories for series as it works with movies.
 
 
 
