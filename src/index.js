@@ -13,6 +13,8 @@ import Movies from './components/movies';
 import Series from './components/series';
 import Serie from './components/serie';
 import Category_Serie from './components/category'
+import Home_Movies from './components/home_movies'
+import Home_Series from './components/home_series'
 
 
 const store = createStore(allReducers);
@@ -28,6 +30,8 @@ ReactDOM.render(
             <Route path="/series" component={Series}/>
             <Route path="/serie" component={Serie}/>
             <Route path="/category_ser" component={Category_Serie}/>
+            <route path="/homemovies" component={Home_Movies}/>
+            <route path="/homeseries" component={Home_Series}/>
         </Router>
     </Provider>
     , document.getElementById('root'));
