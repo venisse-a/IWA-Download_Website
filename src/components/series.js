@@ -8,59 +8,7 @@ import {Ser_Select} from '../action/ser_select';
 
 class Series extends Component{
 
-    constructor() {
-        super();
-        this.state = {
-            query: '',
-            queryFilter : 'title',
-            queryPlaceholder : 'Search...'
-        }
-    }
 
-    all_series(){
-        var radioFilter = this.state.queryFilter;
-        var filteredSeries = this.props.series.filter(
-            (serie) => {
-                if (radioFilter == 'title') {
-                    return serie.title.toLowerCase().indexOf(this.state.query.toLowerCase()) !== -1;
-                } else if (radioFilter == 'releaseDate') {
-                    return serie.release_date.toString().startsWith(this.state.query);
-                } else if (radioFilter == 'uploadDate') {
-                    return serie.upload_date.toString().startsWith(this.state.query);
-                }
-            }
-        );
-        var alphaOrder = [];
-        for (var i=0;  i < filteredSeries.length;i++) {
-            alphaOrder.push(filteredSeries[i]);
-        }
-        alphaOrder.sort(function(mov1, mov2) {
-            if(mov1.title < mov2.title) return -1;
-            if(mov1.title > mov2.title) return 1;
-            return 0;});
-        return alphaOrder.map((serie) => {
-            return(
-                <li key={serie.id} onClick={() => this.props.Cat_Ser_Select(serie)}>
-                    <Link to="/serie">{serie.title}</Link>
-                </li>
-            );
-        });
-    }
-
-    updateQuery(event) {
-        this.setState({query : event.target.value});
-    }
-
-    updateQueryFilter(event) {
-        this.setState({queryFilter : event.target.value});
-        if (event.target.value == 'title') {
-            this.setState({queryPlaceholder : "Search..."});
-        } else if (event.target.value == 'releaseDate') {
-            this.setState({queryPlaceholder : "YYYY"});
-        } else if (event.target.value == 'uploadDate') {
-            this.setState({queryPlaceholder : "YYYY"});
-        }
-    }
 
     render() {
         return(

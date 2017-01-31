@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import Header from './header';
-import {Menu,Input,Card,Image} from 'semantic-ui-react';
+import {Menu,Input,Card,Image,Container} from 'semantic-ui-react';
 import {Cat_Select} from '../action/cat_select';
 import {Mov_Select} from '../action/mov_select';
 
@@ -82,12 +82,10 @@ class Home_Movies extends Component{
             <div>
                 <Header />
                 <Menu>{this.categories()}</Menu>
-                <div></div>
                 <Input type="text" value={this.state.query} onChange={this.updateQuery.bind(this)} placeholder={this.state.queryPlaceholder}/>
                 <Input type="radio" name="filterSelector" value="title" onClick={this.updateQueryFilter.bind(this)} /> Title
                 <Input type="radio" name="filterSelector" value="releaseDate" onClick={this.updateQueryFilter.bind(this)} /> Release Date
                 <Input type="radio" name="filterSelector" value="uploadDate" onClick={this.updateQueryFilter.bind(this)} /> Upload Date
-                <div></div>
                 <Card.Group itemsPerRow={8}>{this.all_movies()}</Card.Group>
             </div>
         );

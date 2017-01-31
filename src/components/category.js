@@ -9,6 +9,7 @@ import {Mov_Select} from '../action/mov_select.js';
 class Category_Movie extends Component {
 
     getCatMovies(){
+        console.log("foepzkoepzkfopezkfpoz");
         var catMovies = [];
         for (var i=0;  i < this.props.movies.length;i++) {
             if (this.props.movies[i].genre.indexOf(this.props.active_movie_category.name) > -1) {
