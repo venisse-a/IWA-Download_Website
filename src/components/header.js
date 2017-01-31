@@ -19,10 +19,10 @@ class Header extends Component{
                     <Button basic inverted color='red' className="button">Series</Button>
                 </Link>
                 <Link to="/login">
-                    <Button basic inverted color='red' className="button">Sign In</Button>
+                    <Button color='green' className="button">Sign In</Button>
                 </Link>
                 <Link to="/register">
-                    <Button basic inverted color='red' className="button">Register</Button>
+                    <Button color='grey' className="button">Register</Button>
                 </Link>
             </Segment>
         );

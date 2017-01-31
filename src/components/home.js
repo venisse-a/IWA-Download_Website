@@ -3,21 +3,13 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import Header from './header';
+import { Grid, Menu, Segment } from 'semantic-ui-react'
 import {Cat_Select} from '../action/cat_select';
 import {Mov_Select} from '../action/mov_select';
 import {Ser_Select} from '../action/ser_select';
 
 class Home extends Component{
 
-    categories() {
-        return this.props.categories.map((category) => {
-            return(
-                <li key={category.name} onClick={() => this.props.Cat_Select(category)}>
-                    <Link to="/category_mov">{category.name}</Link>
-                </li>
-            );
-        });
-    }
 
     last_release() {
         var ordered = [];
@@ -53,13 +45,22 @@ class Home extends Component{
     render() {
         return(
             <div>
-                <Header />
-                <h2>Categories</h2>
-                <div>{this.categories()}</div>
-                <h2>Last Release</h2>
-                <div>{this.last_release()}</div>
-                <h2>Last Series</h2>
-                <div>{this.last_series()}</div>
+                <Header/>
+                <Grid centered >
+                    <div></div>
+                    <h1>Welcome to DL IT, your new download website with the greatest movies and series</h1>
+                    <div></div>
+                </Grid>
+                <Grid columns={2} centered>
+                    <Grid.Column>
+                        <h2>Last Movies</h2>
+                        <div>{this.last_release()}</div>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <h2>Last Series</h2>
+                        <div>{this.last_series()}</div>
+                    </Grid.Column>
+                </Grid>
             </div>
         );
     }
