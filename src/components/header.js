@@ -2,37 +2,29 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
+import {Button,Segment} from 'semantic-ui-react'
 
 class Header extends Component{
 
     render() {
         return(
-            <table>
-                <tbody>
-                <tr>
-                    <th>
-                        <Link to="/">
-                            <button className="button">Home</button>
-                        </Link>
-                    </th>
-                    <th>
-                        <Link to="/movies">
-                            <button className="button">View All Movies</button>
-                        </Link>
-                    </th>
-                    <th>
-                        <Link to="/login">
-                            <button className="button">Sign In</button>
-                        </Link>
-                    </th>
-                    <th>
-                        <Link to="/register">
-                            <button className="button">Register</button>
-                        </Link>
-                    </th>
-                </tr>
-                </tbody>
-            </table>
+            <Segment inverted>
+                <Link to="/">
+                    <Button basic inverted color='red' className="button">Home</Button>
+                </Link>
+                <Link to="/homemovies">
+                    <Button basic inverted color='red' className="button">Movies</Button>
+                </Link>
+                <Link to="/homeseries">
+                    <Button basic inverted color='red' className="button">Series</Button>
+                </Link>
+                <Link to="/login">
+                    <Button basic inverted color='red' className="button">Sign In</Button>
+                </Link>
+                <Link to="/register">
+                    <Button basic inverted color='red' className="button">Register</Button>
+                </Link>
+            </Segment>
         );
     }
 }
