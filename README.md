@@ -1,4 +1,9 @@
 # IWA-Download_Website
+## By Anthony Venisse
+
+Description:
+
+The project aims to create a download website for movies and series with ReactJS + Redux + Semantic-ui-react
 
 Installation:
 
