@@ -3,10 +3,11 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import Header from './header';
+import {Menu,Input,Card,Image} from 'semantic-ui-react';
 import {Cat_Select} from '../action/cat_select';
 import {Mov_Select} from '../action/mov_select';
 
-class Movies extends Component{
+class Home_Movies extends Component{
 
     constructor() {
         super();
@@ -40,9 +41,13 @@ class Movies extends Component{
             return 0;});
         return alphaOrder.map((movie) => {
             return(
-                <li key={movie.id} onClick={() => this.props.Mov_Select(movie)}>
-                    <Link to="/movie">{movie.title}</Link>
-                </li>
+            <Card key={movie.id} onClick={() => this.props.Mov_Select(movie)}>
+                <Image src={movie.cover} size="small"/>
+                <Card.Content>
+                    <Card.Header>{<Link to="/movie">{movie.title}</Link>}</Card.Header>
+                    <Card.Meta>{movie.release_date}</Card.Meta>
+                </Card.Content>
+            </Card>
             );
         });
     }
@@ -62,20 +67,33 @@ class Movies extends Component{
         }
     }
 
+    categories() {
+        return this.props.categories.map((category) => {
+            return(
+                <Menu.Item key={category.name} onClick={() => this.props.Cat_Select(category)}>
+                    <Link to="/category_mov">{category.name}</Link>
+                </Menu.Item>
+            );
+        });
+    }
+
     render() {
         return(
             <div>
                 <Header />
-                <input type="text" value={this.state.query} onChange={this.updateQuery.bind(this)} placeholder={this.state.queryPlaceholder}/>
-                <input type="radio" name="filterSelector" value="title" onClick={this.updateQueryFilter.bind(this)} /> Title
-                <input type="radio" name="filterSelector" value="releaseDate" onClick={this.updateQueryFilter.bind(this)} /> Release Date
-                <input type="radio" name="filterSelector" value="uploadDate" onClick={this.updateQueryFilter.bind(this)} /> Upload Date
-                <div>{this.all_movies()}</div>
+                <Menu>{this.categories()}</Menu>
+                <div></div>
+                <Input type="text" value={this.state.query} onChange={this.updateQuery.bind(this)} placeholder={this.state.queryPlaceholder}/>
+                <Input type="radio" name="filterSelector" value="title" onClick={this.updateQueryFilter.bind(this)} /> Title
+                <Input type="radio" name="filterSelector" value="releaseDate" onClick={this.updateQueryFilter.bind(this)} /> Release Date
+                <Input type="radio" name="filterSelector" value="uploadDate" onClick={this.updateQueryFilter.bind(this)} /> Upload Date
+                <div></div>
+                <Card.Group itemsPerRow={8}>{this.all_movies()}</Card.Group>
             </div>
         );
     }
-
 }
+
 
 function mapStateToProps(state) {
     return {
@@ -88,4 +106,4 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({Cat_Select: Cat_Select, Mov_Select: Mov_Select}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Movies);
+export default connect(mapStateToProps, mapDispatchToProps)(Home_Movies);
